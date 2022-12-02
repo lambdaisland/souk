@@ -1,0 +1,2 @@
+{:deps {com.lambdaisland/launchpad #_{:mvn/version "0.12.64-alpha"}
+        {:local/root "/home/arne/github/lambdaisland/launchpad"}}}
