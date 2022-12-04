@@ -1,0 +1,12 @@
+<configuration scan="true" scanPeriod="5 seconds">
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>[%d{HH:mm:ss.SSS}] %highlight([%level]) [%logger] %msg%n</pattern>
+      <!-- <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</pattern> -->
+    </encoder>
+  </appender>
+  <root level="INFO">
+    <appender-ref ref="STDOUT" />
+  </root>
+  <logger name="lambdaisland.souk" level="TRACE" />
+</configuration>

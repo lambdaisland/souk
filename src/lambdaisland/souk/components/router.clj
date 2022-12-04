@@ -1,7 +1,7 @@
 (ns lambdaisland.souk.components.router
   "Reitit routes and router"
   (:require
-   [lambdaisland.souk.dev-router :as dev-router]
+   [lambdaisland.souk.util.dev-router :as dev-router]
    [muuntaja.core :as muuntaja]
    [reitit.dev.pretty :as pretty]
    [reitit.ring :as reitit-ring]

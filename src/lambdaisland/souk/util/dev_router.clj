@@ -1,4 +1,4 @@
-(ns lambdaisland.souk.dev-router
+(ns lambdaisland.souk.util.dev-router
   "Reitit router wrapper that auto-rebuilds, for REPL workflows."
   (:require [reitit.core :as reitit]))
 

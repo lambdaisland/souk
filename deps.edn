@@ -3,7 +3,7 @@
 
          ;; Application setup
          com.lambdaisland/webbing {:local/root "/home/arne/github/lambdaisland/webbing"}
-;;         {:mvn/version "0.4.20-alpha"}
+         ;;         {:mvn/version "0.4.20-alpha"}
          ;; Incoming HTTP
          ring/ring-core              {:mvn/version "1.9.6"}
          ring/ring-jetty-adapter     {:mvn/version "1.9.6"}
@@ -21,6 +21,13 @@
          ;; Database
          seancorfield/next.jdbc            {:mvn/version "1.2.659"}
          com.impossibl.pgjdbc-ng/pgjdbc-ng {:mvn/version "0.8.9"}
+
+         ;; Logging
+         ;; Webbing pulls in pedestal-log/glogi, but does not dictate the logging sink
+         org.slf4j/jul-to-slf4j         {:mvn/version "2.0.3"}
+         org.slf4j/jcl-over-slf4j       {:mvn/version "2.0.3"}
+         org.slf4j/log4j-over-slf4j     {:exclusions [org.slf4j/slf4j-nop], :mvn/version "2.0.3"}
+         ch.qos.logback/logback-classic {:exclusions [org.slf4j/slf4j-api org.slf4j/slf4j-nop] :mvn/version "1.4.4"}
          }
 
  :aliases
