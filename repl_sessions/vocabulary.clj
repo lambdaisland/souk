@@ -2,7 +2,6 @@
   (:require [lambdaisland.souk.json-ld :as ld]
             [lambdaisland.souk.activitypub :refer :all]))
 
-
 (ld/expand (:body (ld/json-get "https://raw.githubusercontent.com/gobengo/activitystreams2-spec-scraped/master/data/activitystreams-vocabulary/1528589057.json")))
 
 (let [{:owl/keys [imports]} (GET "https://raw.githubusercontent.com/gobengo/activitystreams2-spec-scraped/master/data/activitystreams-vocabulary/1528589057.json")]

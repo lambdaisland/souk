@@ -1,0 +1,8 @@
+{:http/router
+ {:gx/component lambdaisland.souk.components.router/component
+  :gx/props     {:dev-router? #setting :dev/reload-routes?}}
+
+ :http/server
+ {:gx/component lambdaisland.souk.components.jetty/component
+  :gx/props     {:jetty-options {:port #setting :port}
+                 :router        (gx/ref :http/router)}}}

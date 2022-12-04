@@ -1,7 +1,6 @@
 (ns lambdaisland.souk.activitypub
+  "Interact with ActivityPub instances"
   (:require [lambdaisland.souk.json-ld :as ld]))
-
-(set! *print-namespace-maps* false)
 
 (def common-prefixes
   {"dcterms" "http://purl.org/dc/terms/"

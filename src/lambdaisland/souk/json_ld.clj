@@ -1,4 +1,6 @@
 (ns lambdaisland.souk.json-ld
+  "Interfacing with JSON-LD endpoints, and converting to and from idiomatic
+  Clojure data."
   (:require [hato.client :as hato]
             [clojure.string :as str]
             [clojure.walk :as walk]))
