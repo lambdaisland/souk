@@ -16,3 +16,5 @@
 
 (defn GET [url]
   (ld/internalize (ld/expand (:body (ld/json-get url))) common-prefixes))
+
+(GET "https://toot.cat/users/plexus")

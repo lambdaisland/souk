@@ -1,1 +1,2 @@
-{:dev/reload-routes? true}
+{:dev/reload-routes? true
+ :jdbc/url "jdbc:pgsql://localhost:5432/souk?user=postgres"}

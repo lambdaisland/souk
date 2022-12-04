@@ -16,12 +16,12 @@
   (let [ds (jdbc/get-datasource (pg-url "postgres"))]
     (jdbc/execute! ds [(str "DROP DATABASE IF EXISTS " name)])
     (jdbc/execute! ds [(str "CREATE DATABASE " name)])))
-
+(pg-url "souk")
 (recreate-db! "souk")
 
 (defn sql-ident [v]
   (if (sequential? v)
-    (str/join "." (map identifier v))
+    (str/join "." (map sql-ident v))
     (str "\""
          (if (keyword? v)
            (subs (str v) 1)

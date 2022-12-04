@@ -5,4 +5,9 @@
  :http/server
  {:gx/component lambdaisland.souk.components.jetty/component
   :gx/props     {:jetty-options {:port #setting :port}
-                 :router        (gx/ref :http/router)}}}
+                 :router        (gx/ref :http/router)
+                 :db            (gx/ref :storage/db)}}
+
+ :storage/db
+ {:gx/component lambdaisland.souk.db/component
+  :gx/props     {:url #setting :jdbc/url}}}

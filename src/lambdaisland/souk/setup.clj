@@ -32,7 +32,6 @@
     {:schemas schemas
      :keys    (:dev/start-keys local-config start-keys)
      :sources {:config   [(proj-resource "config.edn")
-                          (proj-resource "config-development.edn")
                           (dissoc local-config :dev/start-keys)]
                :secrets   [(config/dotenv)
                            (config/env)
