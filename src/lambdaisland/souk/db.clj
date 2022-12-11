@@ -65,8 +65,8 @@
         (cons
          (json/encode props)
          (concat
-          (map (comp pg-coerce val) props)
-          (map (comp pg-coerce val) props)))))
+          (map (comp pg-coerce val) entity)
+          (map (comp pg-coerce val) entity)))))
 
 (defn start! [{:keys [props]}]
   (let [ds (doto (ComboPooledDataSource.)

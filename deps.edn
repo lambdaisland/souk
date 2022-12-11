@@ -31,7 +31,8 @@
          org.slf4j/log4j-over-slf4j     {:exclusions [org.slf4j/slf4j-nop], :mvn/version "2.0.3"}
          ch.qos.logback/logback-classic {:exclusions [org.slf4j/slf4j-api org.slf4j/slf4j-nop] :mvn/version "1.4.4"}
 
-         djblue/portal {:mvn/version "0.35.0"}}
+         djblue/portal {:mvn/version "0.35.0"}
+         lambdaisland/uri {:mvn/version "1.13.95"}}
 
  :aliases
  {:dev  {:extra-paths ["dev"]}

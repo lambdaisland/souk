@@ -7,13 +7,13 @@
 (let [{:keys [schema ds]} (user/value :storage/db)
       table :activitystreams/Actor
       person (ap/GET "https://toot.cat/users/plexus/")]
-  #_
+
   (jdbc/execute! ds
                  (db/insert-sql table
                                 (select-keys person (get schema table))
                                 (apply dissoc person :rdf/type (get schema table))))
-  [(select-keys person (get schema table))
-   (apply dissoc person :rdf/type (get schema table))]
+  #_[(select-keys person (get schema table))
+     (apply dissoc person :rdf/type (get schema table))]
   )
 
 (count

@@ -1,8 +1,8 @@
 (ns repl-sessions.json-ld-stuff
   (:require
+   [cheshire.core :as json]
    [clojure.string :as str]
-   [hato.client :as hato]
-   [cheshire.core :as json])
+   [hato.client :as hato])
   (:import (org.jsoup Jsoup)))
 
 (set! *print-namespace-maps* false)
