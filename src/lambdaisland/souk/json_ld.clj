@@ -110,8 +110,6 @@
       (map? v)
       (-> v
           (cond-> (contains? v "@type")
-            (doto prn)
-            (contains? v "@type")
             (update "@type" shorten))
           (update-keys (fn [k]
                          (case k

@@ -32,7 +32,8 @@
          ch.qos.logback/logback-classic {:exclusions [org.slf4j/slf4j-api org.slf4j/slf4j-nop] :mvn/version "1.4.4"}
 
          djblue/portal {:mvn/version "0.35.0"}
-         lambdaisland/uri {:mvn/version "1.13.95"}}
+         lambdaisland/uri {:mvn/version "1.13.95"}
+         com.lambdaisland/facai {:mvn/version "0.7.59-alpha"}}
 
  :aliases
  {:dev  {:extra-paths ["dev"]}

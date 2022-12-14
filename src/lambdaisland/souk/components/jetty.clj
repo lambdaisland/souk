@@ -3,8 +3,6 @@
             [reitit.ring :as reitit-ring])
   (:import (org.eclipse.jetty.server Server)))
 
-(def defaults {:join? false})
-
 (def ?JettyOptions
   "Start a Jetty webserver to serve the given handler according to the
   supplied options:
@@ -67,6 +65,8 @@
   [:map
    [:jetty-options ?JettyOptions]])
 
+(def defaults {:join? false})
+
 (defn ring-handler [reitit-router]
   (reitit-ring/ring-handler
    reitit-router
@@ -74,7 +74,8 @@
     (reitit-ring/create-default-handler))))
 
 (defn http-start [{:keys [props]}]
-  (let [{:keys [router jetty-options]} props
+  (let [{:keys [jetty-options]
+         :http/keys [router]} props
         jetty-options (merge defaults jetty-options)]
     (ring.jetty/run-jetty (ring-handler router) jetty-options)))
 

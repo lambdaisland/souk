@@ -41,7 +41,7 @@
                     :str (sql-str (second x))
                     :raw (second x)
                     :list (sql-list (map sql (next x)))
-                    :commas (sql-list "" "" ", " (map sql (next x)))
+                    :bare-list (sql-list "" "" ", " (map sql (next x)))
                     :fn (str (second x)
                              (sql-list (map sql (nnext x))))
                     (apply sql x))

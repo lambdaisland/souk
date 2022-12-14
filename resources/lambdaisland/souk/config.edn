@@ -1,13 +1,21 @@
 {:http/router
  {:gx/component lambdaisland.souk.components.router/component
-  :gx/props     {:dev-router? #setting :dev/reload-routes?}}
+  :gx/props     {:dev-router?     #setting :dev/reload-routes?
+                 :storage/db      (gx/ref :storage/db)
+                 :instance/domain #setting :instance/domain}}
 
  :http/server
  {:gx/component lambdaisland.souk.components.jetty/component
   :gx/props     {:jetty-options {:port #setting :port}
-                 :router        (gx/ref :http/router)
-                 :db            (gx/ref :storage/db)}}
+                 :http/router   (gx/ref :http/router)}}
 
  :storage/db
- {:gx/component lambdaisland.souk.db/component
-  :gx/props     {:url #setting :jdbc/url}}}
+ {:gx/component lambdaisland.souk.components.db/component
+  :gx/props     {:url #setting :jdbc/url
+                 :schema (gx/ref :storage/schema)}}
+
+ :storage/schema
+ {:gx/component lambdaisland.souk.components.db-schema/component
+  :gx/props     {:url #setting :jdbc/url
+                 :admin-url #setting :jdbc/admin-url
+                 :schemas [#resource "lambdaisland/souk/ActivityStreams.edn"]}}}

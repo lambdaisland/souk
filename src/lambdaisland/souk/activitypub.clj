@@ -12,9 +12,8 @@
    "activitystreams" "https://www.w3.org/ns/activitystreams#"
    "xsd" "http://www.w3.org/2001/XMLSchema#"
    "owl" "http://www.w3.org/2002/07/owl#"
-   "rdfs" "http://www.w3.org/2000/01/rdf-schema#"})
+   "rdfs" "http://www.w3.org/2000/01/rdf-schema#"
+   "ostatus" "http://ostatus.org#"})
 
 (defn GET [url]
   (ld/internalize (ld/expand (:body (ld/json-get url))) common-prefixes))
-
-(GET "https://toot.cat/users/plexus")

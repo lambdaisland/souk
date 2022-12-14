@@ -1,6 +1,11 @@
 (ns user)
 
-(alter-var-root #'*print-namespace-maps* (constantly false))
+(try
+  (alter-var-root #'*print-namespace-maps* (constantly false))
+  (catch Exception _))
+(try
+  (set! *print-namespace-maps* false)
+  (catch Exception _))
 
 (defmacro jit [sym]
   `(requiring-resolve '~sym))

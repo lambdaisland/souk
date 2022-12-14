@@ -1,0 +1,59 @@
+{:activitystreams/Actor
+ {:properties
+  [[:activitystreams/name text]
+   [:activitystreams/preferredUsername text]
+   [:activitystreams/url rdf/iri]
+   [:activitystreams/summary text]
+   [:ldp/inbox rdf/iri]
+   [:activitystreams/outbox rdf/iri]
+   [:activitystreams/published datetime]]}
+
+ :activitystreams/Person
+ {:store-as :activitystreams/Actor}
+
+ :activitystreams/Service
+ {:store-as :activitystreams/Actor}
+
+ :activitystreams/Note
+ {:properties
+  [[:activitystreams/summary text]
+   [:activitystreams/content text]
+   ]}
+
+ #_
+
+ {:rdf/type :activitystreams/Note,
+  :rdf/id "https://plexus.osrx.chat/users/plexus/statuses/109495602955086656",
+  :activitystreams/inReplyTo nil,
+  :activitystreams/published #inst "2022-12-11T14:51:48Z"
+  :activitystreams/to ["https://www.w3.org/ns/activitystreams#Public"],
+  :activitystreams/sensitive false,
+  :activitystreams/cc ["https://plexus.osrx.chat/users/plexus/followers"],
+  :activitystreams/attributedTo "https://plexus.osrx.chat/users/plexus",
+  :activitystreams/summary nil,
+  :activitystreams/tag [],
+  :ostatus/conversation "https://www.w3.org/ns/activitystreams#tagplexus.osrx.chat,2022-12-11",
+  :activitystreams/replies {:rdf/id
+                            "https://plexus.osrx.chat/users/plexus/statuses/109495602955086656/replies",
+                            :rdf/type :activitystreams/Collection,
+                            :activitystreams/first
+                            {:rdf/type :activitystreams/CollectionPage,
+                             :activitystreams/next
+                             "https://plexus.osrx.chat/users/plexus/statuses/109495602955086656/replies?only_other_accounts=true&page=true",
+                             :activitystreams/partOf
+                             "https://plexus.osrx.chat/users/plexus/statuses/109495602955086656/replies",
+                             :activitystreams/items []}},
+  :ostatus/inReplyToAtomUri nil,
+  :ostatus/atomUri "https://plexus.osrx.chat/users/plexus/statuses/109495602955086656",
+  :activitystreams/url "https://plexus.osrx.chat/@plexus/109495602955086656",
+  :activitystreams/attachment [],
+  :activitystreams/content {"en" "<p>Hello, world!</p>"}}
+
+ :activitystreams/Article
+ {:store-as :activitystreams/Note}
+
+ :activitystreams/Link
+ {:store-as :activitystreams/Note}
+
+ :activitystreams/Question
+ {:store-as :activitystreams/Note}}
