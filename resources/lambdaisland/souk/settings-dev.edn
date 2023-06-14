@@ -1,4 +1,4 @@
 {:dev/reload-routes? true
- :jdbc/url "jdbc:pgsql://localhost:55432/souk?user=postgres"
- :jdbc/admin-url "jdbc:pgsql://localhost:55432/postgres?user=postgres"
- :instance/domain "dev.squid.casa"}
+ :jdbc/url           "jdbc:pgsql://localhost:55432/souk?user=postgres"
+ :jdbc/admin-url     "jdbc:pgsql://localhost:55432/postgres?user=postgres"
+ :instance/origin    "https://dev.squid.casa"}

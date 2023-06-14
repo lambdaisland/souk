@@ -142,6 +142,29 @@
       :else
       v)))
 
+(defn kw->iri [kw prefixes]
+  (if (keyword? kw)
+    (let [prefix (namespace kw)
+          base (get prefixes prefix)]
+      (if base
+        (str base (name kw))
+        kw))
+    kw))
+
+(defn externalize [v context prefixes]
+  (let [iri->prop (into {}
+                        (map (fn [[k v]]
+                               [(get v "@id") k]))
+                        (expand-context context))
+        convert-val (fn [v]
+                      (let [v (cond
+                                (= :rdf/type v) "@type"
+                                (= :rdf/id v) "@id"
+                                :else v)
+                            ?iri (kw->iri v prefixes)]
+                        (get iri->prop ?iri ?iri)))]
+    (assoc (walk/postwalk convert-val v) "@context" context)))
+
 ;; (compact
 ;;  (expand (:body (json-get "https://toot.cat/users/plexus")))
 ;;  common-prefixes)

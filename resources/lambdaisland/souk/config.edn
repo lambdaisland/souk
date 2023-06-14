@@ -2,7 +2,7 @@
  {:gx/component lambdaisland.souk.components.router/component
   :gx/props     {:dev-router?     #setting :dev/reload-routes?
                  :storage/db      (gx/ref :storage/db)
-                 :instance/domain #setting :instance/domain}}
+                 :instance/origin #setting :instance/origin}}
 
  :http/server
  {:gx/component lambdaisland.souk.components.jetty/component
@@ -11,11 +11,11 @@
 
  :storage/db
  {:gx/component lambdaisland.souk.components.db/component
-  :gx/props     {:url #setting :jdbc/url
+  :gx/props     {:url    #setting :jdbc/url
                  :schema (gx/ref :storage/schema)}}
 
  :storage/schema
  {:gx/component lambdaisland.souk.components.db-schema/component
-  :gx/props     {:url #setting :jdbc/url
+  :gx/props     {:url       #setting :jdbc/url
                  :admin-url #setting :jdbc/admin-url
-                 :schemas [#resource "lambdaisland/souk/ActivityStreams.edn"]}}}
+                 :schemas   [#resource "lambdaisland/souk/ActivityStreams.edn"]}}}

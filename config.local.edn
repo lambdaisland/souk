@@ -1,1 +1,1 @@
-{:dev/start-keys [:storage/schema]}
+{:dev/start-keys []}

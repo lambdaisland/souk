@@ -1,6 +1,7 @@
 {:activitystreams/Actor
  {:properties
-  [[:activitystreams/name text]
+  [[:souk/origin text]
+   [:activitystreams/name text]
    [:activitystreams/preferredUsername text]
    [:activitystreams/url rdf/iri]
    [:activitystreams/summary text]
@@ -18,10 +19,11 @@
  {:properties
   [[:activitystreams/summary text]
    [:activitystreams/content text]
+   [:activitystreams/published datetime]
+   [ :activitystreams/attributedTo rdf/iri]
    ]}
 
  #_
-
  {:rdf/type :activitystreams/Note,
   :rdf/id "https://plexus.osrx.chat/users/plexus/statuses/109495602955086656",
   :activitystreams/inReplyTo nil,

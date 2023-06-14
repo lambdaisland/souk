@@ -11,6 +11,28 @@
 "https://toot.cat/@plexus"
 "http://toot.cat/users/plexus"
 "https://toot.cat/users/plexus"
+"acct:plexus@toot.cat"
+
+
+(for [resource ["acct:plexus@toot.cat"
+                "https://toot.cat/u/plexus"
+                "https://toot.cat/users/plexus"]
+      :let [origin (uri/uri "https://toot.cat")]]
+  (let [iri (uri/uri resource)]
+    (cond
+      (#{"http" "https"} (:scheme iri))
+      (if (and (= (:scheme origin) (:scheme iri))
+               (= (:host origin) (:host iri)))
+        (if-let [[_ _ u] (re-find #"^/(u|users)/([^/]+)$" (:path iri))]
+          {:domain (:host iri)
+           :username u}))
+      (#{"acct"} (:scheme iri))
+      (let [[username domain] (str/split (:path iri) #"@")]
+        {:domain domain
+         :username username})
+      )))
+
+(into {} (uri/uri "acct://plexus@toot.cat"))
 
 ;; rel seems to be ignored
 

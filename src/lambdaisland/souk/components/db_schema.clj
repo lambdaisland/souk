@@ -11,6 +11,7 @@
 
 (def default-properties
   [[:rdf/id 'text 'primary-key]
+   [:rdf/type 'text]
    [:rdf/props 'jsonb 'default "{}"]
    [:meta/created-at 'timestamp-with-time-zone 'default [:fn 'now] 'not-null]
    [:meta/updated-at 'timestamp-with-time-zone]])
@@ -67,8 +68,7 @@
                   properties))])
 
 (defn migrate-tables! [url schemas]
-  (doseq [schema schemas
-          [table {:keys [properties store-as]}] (aero/read-config schema)
+  (doseq [[table {:keys [properties store-as]}] schemas
           :when (not store-as)]
     (let [ds (jdbc/get-datasource url)
           table-cols (table-columns ds nil)
@@ -84,7 +84,7 @@
           (log/info :table/altered {:table table :new-props (map first new-props)}))
         (do
           (jdbc/execute! ds (create-table-sql table all-props))
-          (jdbc/execute! ds [(sql/sql 'create-trigger  :set-timestamp
+          (jdbc/execute! ds [(sql/sql 'create-trigger :set-timestamp
                                       'before-update
                                       'on table
                                       'for-each-row
@@ -103,8 +103,20 @@
         (throw e))))
   (let [ds (jdbc/get-datasource url)]
     (jdbc/execute! ds [set-ts-trigger-def])
-    (migrate-tables! url schemas)
-    (table-columns ds)))
+    (let [schemas (apply merge (map aero/read-config schemas))
+          _ (migrate-tables! url schemas)]
+      (into {}
+            (map (fn [[type {:keys [properties store-as]}]]
+                   [type
+                    (cond-> {:table (or store-as type)
+                             :properties
+                             (into {:rdf/id 'rdf/iri
+                                    :rdf/type 'rdf/iri}
+                                   (or properties
+                                       (get-in schemas [store-as :properties])))})]))
+            schemas))))
 
 (def component
   {:gx/start {:gx/processor #'start!}})
+
+(user/value :storage/schema)

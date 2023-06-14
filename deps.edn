@@ -33,7 +33,10 @@
 
          djblue/portal {:mvn/version "0.35.0"}
          lambdaisland/uri {:mvn/version "1.13.95"}
-         com.lambdaisland/facai {:mvn/version "0.7.59-alpha"}}
+
+         ;; Test data
+         com.lambdaisland/facai {:mvn/version "0.8.68-alpha"}
+         com.lambdaisland/faker {:mvn/version "0.2.8"}}
 
  :aliases
  {:dev  {:extra-paths ["dev"]}

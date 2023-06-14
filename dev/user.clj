@@ -43,6 +43,9 @@
     (add-tap (jit portal.api/submit))
     p))
 
+(defn system []
+  ((jit k16.gx.beta.system/values) sys-id))
+
 (defn value [k]
   (get ((jit k16.gx.beta.system/values) sys-id) k))
 

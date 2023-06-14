@@ -35,6 +35,8 @@
              :http-client {:redirect-policy :normal}
              :as :json-string-keys}))
 
+(json-fetch "https://toot.cat/users/plexus")
+
 (def expand-context
   (memoize
    (fn
